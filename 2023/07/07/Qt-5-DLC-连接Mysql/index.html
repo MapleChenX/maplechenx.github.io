@@ -18,13 +18,15 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta property="og:type" content="article">
+        <meta name="description" content="数据库操作：增，查。删除和修改同理。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include &quot;widget.h&quot;#include &quot;ui_widget.h&quot;Widget::Widge">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Qt-5-DLC-连接Mysql">
 <meta property="og:url" content="https://maplechenx.github.io/2023/07/07/Qt-5-DLC-%E8%BF%9E%E6%8E%A5Mysql/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="数据库操作：增，查。删除和修改同理。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include &quot;widget.h&quot;#include &quot;ui_widget.h&quot;Widget::Widge">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-07T10:37:03.000Z">
-<meta property="article:modified_time" content="2023-07-07T10:48:34.548Z">
+<meta property="article:modified_time" content="2023-07-08T01:21:44.905Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Qt">
 <meta name="twitter:card" content="summary">
@@ -317,8 +319,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-07-07 18:48:34</span>
-            <span class="mobile">2023-07-07 18:48</span>
+            <span class="desktop">2023-07-08 09:21:44</span>
+            <span class="mobile">2023-07-08 09:21</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -364,7 +366,10 @@
             
 
             <div class="article-content markdown-body">
-                
+                <p>数据库操作：增，查。删除和修改同理。</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;widget.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ui_widget.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">Widget::<span class="built_in">Widget</span>(QWidget *parent) :</span><br><span class="line">    <span class="built_in">QWidget</span>(parent),</span><br><span class="line">    <span class="built_in">ui</span>(<span class="keyword">new</span> Ui::Widget)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;<span class="built_in">setupUi</span>(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//连接数据库</span></span><br><span class="line">    db = QSqlDatabase::<span class="built_in">addDatabase</span>(<span class="string">&quot;QMYSQL&quot;</span>);     <span class="comment">//加载MySQL数据库驱动</span></span><br><span class="line"></span><br><span class="line">    db.<span class="built_in">setDatabaseName</span>(<span class="string">&quot;mydatabase&quot;</span>);</span><br><span class="line">    db.<span class="built_in">setHostName</span>(<span class="string">&quot;localhost&quot;</span>);</span><br><span class="line">    db.<span class="built_in">setUserName</span>(<span class="string">&quot;root&quot;</span>);</span><br><span class="line">    db.<span class="built_in">setPassword</span>(<span class="string">&quot;root&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (db.<span class="built_in">open</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        QMessageBox::<span class="built_in">information</span>(<span class="keyword">this</span>, <span class="string">&quot;连接提示&quot;</span>, <span class="string">&quot;连接成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        QMessageBox::<span class="built_in">warning</span>(<span class="keyword">this</span>, <span class="string">&quot;连接提示&quot;</span>, <span class="string">&quot;连接失败&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Widget::~<span class="built_in">Widget</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">delete</span> ui;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Widget::on_insertPushButton_clicked</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    QString id = ui-&gt;idLineEdit-&gt;<span class="built_in">text</span>();</span><br><span class="line">    QString name = ui-&gt;nameLineEdit-&gt;<span class="built_in">text</span>();</span><br><span class="line">    QString birth = ui-&gt;birLineEdit-&gt;<span class="built_in">text</span>();</span><br><span class="line"></span><br><span class="line">    QString sql = <span class="built_in">QString</span>(<span class="string">&quot;insert into student values (%1, &#x27;%2&#x27;, &#x27;%3&#x27;);&quot;</span>).<span class="built_in">arg</span>(id).<span class="built_in">arg</span>(name).<span class="built_in">arg</span>(birth);</span><br><span class="line"></span><br><span class="line">    QSqlQuery query;</span><br><span class="line">    <span class="keyword">if</span> (query.<span class="built_in">exec</span>(sql))</span><br><span class="line">    &#123;</span><br><span class="line">        QMessageBox::<span class="built_in">information</span>(<span class="keyword">this</span>, <span class="string">&quot;插入提示&quot;</span>, <span class="string">&quot;插入成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        QMessageBox::<span class="built_in">information</span>(<span class="keyword">this</span>, <span class="string">&quot;插入提示&quot;</span>, <span class="string">&quot;插入失败&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除和修改同理：第一步，构造sql语句；第二步，执行sql语句。</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Widget::on_findPushButton_clicked</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    QSqlQuery query;</span><br><span class="line">    query.<span class="built_in">exec</span>(<span class="string">&quot;select * from student;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
             </div>
 
             
@@ -387,13 +392,13 @@
                         <div class="article-prev">
                             <a class="prev"
                             rel="prev"
-                            href="/2023/07/07/Qt-6-%E6%9D%82%E9%A1%B9/"
+                            href="/2023/07/07/Qt-7-%E6%9D%82%E9%A1%B9/"
                             >
                                 <span class="left arrow-icon flex-center">
                                     <i class="fa-solid fa-chevron-left"></i>
                                 </span>
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Qt-6-杂项</span>
+                                    <span class="post-nav-title-item">Qt-7-杂项</span>
                                     <span class="post-nav-item">上一篇</span>
                                 </span>
                             </a>
